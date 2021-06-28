@@ -66,7 +66,7 @@ class FunStateRefresherObx<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FunStateObx(
-      controller:controller,
+      controller: controller,
       builder: () => RefreshConfiguration(
         hideFooterWhenNotFull: true,
         child: SmartRefresher(
@@ -78,7 +78,7 @@ class FunStateRefresherObx<T> extends StatelessWidget {
           onLoading: controller.loadMore,
           enablePullUp: enablePullUp,
 
-          header: header ?? WaterDropHeader(),
+          header: header ?? ClassicHeader(),
           footer: footer ?? ClassicFooter(),
         ),
       ),

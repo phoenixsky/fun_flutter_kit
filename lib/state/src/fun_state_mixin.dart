@@ -154,7 +154,16 @@ class FunStateError {
   final dynamic originError;
   final StackTrace? stackTrace;
 
-  FunStateError(this.originError, [this.stackTrace, message]);
+  /// 业务message
+  final String? _message;
 
-  get message => "todo error msg";
+  /// 原始的错误message
+  late final String errorMessage;
+
+  FunStateError(this.originError, [this.stackTrace, this._message]) {
+    errorMessage = originError.toString();
+    Get.log(stackTrace.toString());
+  }
+
+  get message => _message ?? errorMessage;
 }
