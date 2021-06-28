@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.1.4
+  pull_to_refresh: ^2.0.0
 
 
 dev_dependencies:
