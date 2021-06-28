@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'fun_state/fun_state_menu.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      home: MyHomePage(),
+    return GetMaterialApp(
+      title: 'Fun Flutter Kit',
+      home: FunStatePage(),
     );
   }
 }
@@ -21,11 +23,10 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(""),),
+      appBar: AppBar(
+        title: Text(""),
+      ),
       body: Container(),
     );
   }
 }
-
-
-
