@@ -1,7 +1,4 @@
 library fun_flutter_kit;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'ext/fun_ext.dart';
+export 'state/fun_state.dart';
