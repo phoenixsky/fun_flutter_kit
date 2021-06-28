@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fun_flutter_kit/fun_flutter_kit.dart';
 import 'package:get/get.dart';
 
-import '../article_helper.dart';
+import 'article_helper.dart';
 
 /// 正常列表数据加载
 class DefaultListViewPage extends StatelessWidget {

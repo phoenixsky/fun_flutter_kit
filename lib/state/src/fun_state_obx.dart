@@ -67,20 +67,17 @@ class FunStateRefresherObx<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return FunStateObx(
       controller: controller,
-      builder: () => RefreshConfiguration(
-        hideFooterWhenNotFull: true,
-        child: SmartRefresher(
-          child: builder(),
-          controller: controller.refreshController,
+      builder: () => SmartRefresher(
+        child: builder(),
+        controller: controller.refreshController,
 
-          /// SmartRefresh
-          onRefresh: controller.pullToRefresh,
-          onLoading: controller.loadMore,
-          enablePullUp: enablePullUp,
+        /// SmartRefresh
+        onRefresh: controller.pullToRefresh,
+        onLoading: controller.loadMore,
+        enablePullUp: enablePullUp,
 
-          header: header ?? ClassicHeader(),
-          footer: footer ?? ClassicFooter(),
-        ),
+        header: header ?? ClassicHeader(),
+        footer: footer ?? ClassicFooter(),
       ),
       onEmpty: onEmpty,
       onLoading: onLoading,
@@ -88,3 +85,4 @@ class FunStateRefresherObx<T> extends StatelessWidget {
     );
   }
 }
+

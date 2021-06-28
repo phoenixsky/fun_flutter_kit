@@ -7,49 +7,56 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
-/// 控制[FunState]小部件在子树中的行为方式
+/// 控制[FunFlutterKit]小部件在子树中的行为方式
 ///
 ///
-class FunStateConfiguration extends InheritedWidget {
-  final FunStateBehavior behavior;
+class FunFlutterConfiguration extends InheritedWidget {
+  final FunStateBehavior funStateBehavior;
 
-  const FunStateConfiguration({
+  const FunFlutterConfiguration({
     Key? key,
     required Widget child,
-    required this.behavior,
+    required this.funStateBehavior,
   }) : super(key: key, child: child);
 
   static FunStateBehavior of(BuildContext context) {
-    final FunStateConfiguration? configuration =
-        context.dependOnInheritedWidgetOfExactType<FunStateConfiguration>();
-    return configuration?.behavior ?? FunStateBehavior();
+    final FunFlutterConfiguration? configuration =
+        context.dependOnInheritedWidgetOfExactType<FunFlutterConfiguration>();
+    return configuration?.funStateBehavior ??
+        FunStateBehavior(paging: FunStatePaging());
   }
 
   @override
-  bool updateShouldNotify(FunStateConfiguration oldWidget) {
-    return behavior.runtimeType != oldWidget.behavior.runtimeType ||
-        (behavior != oldWidget.behavior &&
-            behavior.shouldNotify(oldWidget.behavior));
+  bool updateShouldNotify(FunFlutterConfiguration oldWidget) {
+    return funStateBehavior.runtimeType !=
+            oldWidget.funStateBehavior.runtimeType ||
+        (funStateBehavior != oldWidget.funStateBehavior &&
+            funStateBehavior.shouldNotify(oldWidget.funStateBehavior));
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<FunStateBehavior>('behavior', behavior));
+    properties.add(
+        DiagnosticsProperty<FunStateBehavior>('behavior', funStateBehavior));
   }
 }
 
+/// FunState全局配置
 class FunStateBehavior {
+  final FunStatePaging paging;
+
+  FunStateBehavior({required this.paging});
+
+  bool shouldNotify(covariant FunStateBehavior oldDelegate) => false;
+}
+
+class FunStatePaging {
   /// 分页加载初始页页码
-  final int firstPageNum;
+  final int firstPageNo;
 
   /// 每页加载的数量
   final int pageSize;
 
-  FunStateBehavior({
-    this.firstPageNum: 0,
-    this.pageSize: 20,
-  });
-
-  bool shouldNotify(covariant FunStateBehavior oldDelegate) => false;
+  FunStatePaging({this.firstPageNo: 0, this.pageSize: 20});
 }

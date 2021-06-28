@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fun_flutter_kit/fun_flutter_kit.dart';
 import 'package:get/get.dart';
 
-import '../article_helper.dart';
+import 'article_helper.dart';
 
 class RefresherListViewPage extends StatelessWidget {
   final RefresherListViewLogic logic = Get.put(RefresherListViewLogic());

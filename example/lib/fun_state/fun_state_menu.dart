@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fun_flutter_kit_example/fun_state/list_view/refresher_load_more_list_view.dart';
+import 'package:fun_flutter_kit_example/fun_state/list_view/refresher_load_more_list_view_pull_by_ctrl.dart';
 import 'package:get/get.dart';
 
 import 'action.dart';
@@ -53,6 +54,12 @@ class FunStatePage extends StatelessWidget {
               child: Text("下拉刷新，上拉加载 -- 手动"),
               onPressed: () {
                 Get.to(() => RefresherLoadMoreListViewManualPullPage());
+              },
+            ),
+            OutlinedButton(
+              child: Text("下拉刷新，上拉加载 -- 通过controller控制"),
+              onPressed: () {
+                Get.to(() => RefresherLoadMoreListViewPullByCtrlPage());
               },
             ),
           ],

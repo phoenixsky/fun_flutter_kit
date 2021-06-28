@@ -10,10 +10,15 @@ import 'package:fun_flutter_kit/fun_flutter_kit.dart';
 import 'package:get/get.dart';
 
 class ArticleItem extends StatelessWidget {
-  const ArticleItem({Key? key, required this.article, this.isHomeTop: false})
-      : super(key: key);
+  const ArticleItem({
+    Key? key,
+    required this.article,
+    this.index,
+    this.isHomeTop: false,
+  }) : super(key: key);
 
   final ArticleEntity article;
+  final int? index;
 
   /// 是否是首页置顶
   final bool isHomeTop;
@@ -40,8 +45,9 @@ class ArticleItem extends StatelessWidget {
                     : article.shareUser!,
                 style: Get.textTheme.caption,
               ),
+              if(index != null) Text(index.toString()).paddingOnly(left: 10),
               Expanded(child: SizedBox.shrink()),
-              Text(article.niceDate!, style: Get.textTheme.caption)
+              Text(article.niceDate!, style: Get.textTheme.caption),
             ],
           ),
 
@@ -128,7 +134,8 @@ class ArticleTitle extends StatelessWidget {
 /// 接口
 Future<List<ArticleEntity>> fetchArticles(int pageNum, {int? cid = 294}) async {
   if (pageNum == 0) await Future.delayed(Duration(seconds: 1)); //增加动效
-  var resp = await Dio().get('https://www.wanandroid.com/article/list/$pageNum/json',
+  var resp = await Dio().get(
+      'https://www.wanandroid.com/article/list/$pageNum/json',
       queryParameters: (cid != null ? {'cid': cid} : null));
 
   return resp.data['data']['datas']

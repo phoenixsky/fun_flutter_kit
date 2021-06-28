@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:fun_flutter_kit/fun_flutter_kit.dart';
+import 'package:fun_flutter_kit/state/src/fun_state_configuration.dart';
 import 'package:get/get.dart';
 
-import '../article_helper.dart';
-
+import 'article_helper.dart';
 
 class RefresherLoadMoreListViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final RefresherLoadMoreListViewLogic logic = Get.put(RefresherLoadMoreListViewLogic());
+    final RefresherLoadMoreListViewLogic logic =
+        Get.put(RefresherLoadMoreListViewLogic());
     return Scaffold(
         appBar: AppBar(title: Text("RefresherLoadMoreListView")),
         body: FunStateRefresherObx(
@@ -17,6 +18,7 @@ class RefresherLoadMoreListViewPage extends StatelessWidget {
               itemBuilder: (context, index) {
                 return ArticleItem(
                   article: logic.list[index],
+                  index: index,
                   isHomeTop: true,
                 );
               }),
@@ -29,9 +31,15 @@ class RefresherLoadMoreListViewPage extends StatelessWidget {
   }
 }
 
-class RefresherLoadMoreListViewLogic extends FunStateListRefresherController<ArticleEntity> {
+class RefresherLoadMoreListViewLogic
+    extends FunStateListRefresherController<ArticleEntity> {
+
+  /// 分页参数
+  paging() => FunStatePaging(firstPageNo: 0, pageSize: 20);
+
   @override
   Future<List<ArticleEntity>> onLoadData(int pageNum, {int? pageSize}) {
     return fetchArticles(pageNum);
   }
+
 }

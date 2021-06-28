@@ -4,23 +4,14 @@ import 'package:get/get.dart';
 
 import 'article_helper.dart';
 
-/// 手动下拉
-class RefresherLoadMoreListViewManualPullPage extends StatelessWidget {
+/// 通过logic控制下拉
+class RefresherLoadMoreListViewPullByCtrlPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final RefresherLoadMoreListViewManualPullLogic logic =
-        Get.put(RefresherLoadMoreListViewManualPullLogic());
+    final RefresherLoadMoreListViewPullByCtrlLogic logic =
+        Get.put(RefresherLoadMoreListViewPullByCtrlLogic());
     return Scaffold(
-        appBar: AppBar(
-          title: Text("RefresherLoadMoreListViewManualPull"),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  logic.refreshController.requestRefresh();
-                },
-                icon: Icon(Icons.refresh)),
-          ],
-        ),
+        appBar: AppBar(title: Text("RefresherLoadMoreListViewPullByCtrl")),
         body: FunStateRefresherObx(
           builder: () => ListView.builder(
               itemCount: logic.list.length,
@@ -39,11 +30,17 @@ class RefresherLoadMoreListViewManualPullPage extends StatelessWidget {
   }
 }
 
-class RefresherLoadMoreListViewManualPullLogic
+class RefresherLoadMoreListViewPullByCtrlLogic
     extends FunStateListRefresherController<ArticleEntity> {
   /// 初始状态设置为空闲,页面不会自动刷新
   @override
   FunStateStatus initStatus() => FunStateStatus.idle();
+
+  @override
+  void onReady() {
+    super.onReady();
+    refreshController.requestRefresh();
+  }
 
   @override
   Future<List<ArticleEntity>> onLoadData(int pageNum, {int? pageSize}) {
