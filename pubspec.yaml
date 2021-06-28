@@ -1,7 +1,8 @@
 name: fun_flutter_kit
 description: A fun development kit with flutter
 version: 0.0.1
-homepage: https://github.com/phoenixsky/fun_flutter_kit
+homepage: https://github.com/phoenixsky
+repository: https://github.com/phoenixsky/fun_flutter_kit
 
 environment:
   sdk: ">=2.13.0 <3.0.0"

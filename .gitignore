@@ -8,6 +8,8 @@
 .buildlog/
 .history
 .svn/
+# example flutter entrypoint save
+.run/
 
 # IntelliJ related
 *.iml
