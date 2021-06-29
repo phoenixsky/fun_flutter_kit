@@ -59,4 +59,9 @@ class FunStatePaging {
   final int pageSize;
 
   FunStatePaging({this.firstPageNo: 0, this.pageSize: 20});
+
+  @override
+  String toString() {
+    return 'FunStatePaging{firstPageNo: $firstPageNo, pageSize: $pageSize}';
+  }
 }

@@ -8,7 +8,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import 'fun_state_configuration.dart';
+import '../fun_state_configuration.dart';
 import 'fun_state_list_controller.dart';
 
 abstract class FunStateListRefresherController<T>
@@ -46,6 +46,7 @@ abstract class FunStateListRefresherController<T>
 
     /// 分页
     final _paging = paging();
+    Get.log(_paging.toString());
     _currentPageNum = _paging.firstPageNo;
     int _pageSize = _paging.pageSize;
 

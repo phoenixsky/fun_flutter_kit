@@ -5,7 +5,7 @@ import 'fun_state_list_refresher_controller.dart';
 import 'fun_state_mixin.dart';
 
 typedef FunStateBuilder = Widget Function();
-typedef FunStateErrorBuilder = Widget Function(FunStateError error);
+typedef FunStateErrorBuilder = Widget? Function(FunStateError error);
 
 /// 响应式
 class FunStateObx extends StatelessWidget {
@@ -31,6 +31,7 @@ class FunStateObx extends StatelessWidget {
       builder,
       onEmpty: onEmpty,
       onLoading: onLoading,
+      /// 错误
       onError: onError,
     );
   }

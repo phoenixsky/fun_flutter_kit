@@ -80,8 +80,9 @@ mixin FunStateMixin on ListNotifier {
       if (funStateStatus.isLoading) {
         return onLoading ?? const Center(child: CircularProgressIndicator());
       } else if (funStateStatus.isError) {
+        /// onError的返回值如果为空,则返回原widget,适用于[FunStateAction]中的按钮场景
         return onError != null
-            ? onError(funStateStatus.error!)
+            ? onError(funStateStatus.error!) ?? stateBuilder()
             : Center(child: Text(funStateStatus.error!.message!));
       } else if (funStateStatus.isEmpty) {
         return onEmpty != null
@@ -166,4 +167,9 @@ class FunStateError {
   }
 
   get message => _message ?? errorMessage;
+
+  @override
+  String toString() {
+    return '$message';
+  }
 }

@@ -6,8 +6,8 @@
 
 library fun_state;
 
-export 'src/fun_state_list_controller.dart';
-export 'src/fun_state_list_refresher_controller.dart';
-export 'src/fun_state_mixin.dart';
-export 'src/fun_state_action_controller.dart';
-export 'src/fun_state_obx.dart';
+export 'src/controller/fun_state_list_controller.dart';
+export 'src/controller/fun_state_list_refresher_controller.dart';
+export 'src/controller/fun_state_mixin.dart';
+export 'src/controller/fun_state_action_controller.dart';
+export 'src/controller/fun_state_obx.dart';
