@@ -1,4 +1,13 @@
 # fun_flutter_kit
+<a href="https://pub.dev/packages/fun_flutter_kit">
+  <img src="https://img.shields.io/pub/v/fun_flutter_kit.svg"/>
+</a>
+<a href="https://flutter.dev/">
+  <img src="https://img.shields.io/badge/flutter-%3E%3D%202.0.0-green.svg"/>
+</a>
+<a href="https://opensource.org/licenses/MIT">
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg"/>
+</a>
 
 A fun development kit with Flutter
 
@@ -17,6 +26,11 @@ A fun development kit with Flutter
 
 
 ## 如何使用
+0. pub
+```yaml
+  dependencies:
+    fun_flutter_kit : ^0.0.3
+```
 
 1. 集成getX，使用GetMaterialApp。
 
