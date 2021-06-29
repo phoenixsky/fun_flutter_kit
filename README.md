@@ -8,11 +8,13 @@ A fun development kit with Flutter
 
 - 目前项目处于快速迭代状态,API可能会面临大量的Break Change,大家要有心里准备
 - roadmap目前还没有规划完毕,但这个package目的主要是让Flutter开发起来身心愉悦。适合项目快速落地、迭代,想法验证。
-- 项目状态管理采用了[GetX](https://github.com/jonataslaw/getx),在使用过程,需要对getx有一定了解,**特别是getx的controller的释放时机**
+- 项目状态管理采用了[GetX](https://github.com/jonataslaw/getx),在使用过程,需要对getx有一定了解,特别是controller的释放时机
 - 项目集成了一些常用的扩展方法,后期会慢慢迭代
 
 
 # 功能介绍
+
+
 
 ## 如何使用
 
@@ -68,9 +70,8 @@ A fun development kit with Flutter
          Future onLoadData() async {
            return await doXXX();
          }
-       }
-       
-       
+       }             
+      
        class ActionViewPage extends StatelessWidget {
          @override
          Widget build(BuildContext context) {
@@ -98,10 +99,6 @@ A fun development kit with Flutter
        }
       ```
 
-      
-
-  
-
   - List（列表层封装）
 
      - FunStateListController（ViewModel层）
@@ -121,8 +118,7 @@ A fun development kit with Flutter
             return fetchArticles(pageNum);
           }
         }
-        
-        
+
         class RefresherLoadMoreListViewPage extends StatelessWidget {
           @override
           Widget build(BuildContext context) {
@@ -156,9 +152,7 @@ A fun development kit with Flutter
           }
         }
        ```
-
        
-
 # 注意事项
 
 1. [GetX](https://github.com/jonataslaw/getx)的controller自动释放逻辑，见原文[issue](https://github.com/jonataslaw/getx/issues/384#issuecomment-661919495)
@@ -192,7 +186,6 @@ A fun development kit with Flutter
    5. 使用Bindings
 
    如果对这里有疑问，可以通过读get源码来解决你的困惑。主要原因其实是controller挂载的上下文不同。
-
    同样对dialog和bottomSheet适用
 
    
