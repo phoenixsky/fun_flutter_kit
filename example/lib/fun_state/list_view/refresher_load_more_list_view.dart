@@ -25,7 +25,14 @@ class RefresherLoadMoreListViewPage extends StatelessWidget {
           controller: logic,
           enablePullUp: true,
           onLoading: const Center(child: CircularProgressIndicator()),
-          onEmpty: Center(child: Text("无数据")),
+          onEmpty: Center(
+            child: InkWell(
+              onTap: () {
+                logic.pullToRefresh(isInit: true);
+              },
+              child: Text("无数据,点击重试"),
+            ),
+          ),
           onError: (err) => Center(child: Text('出错了$err')),
         ));
   }
@@ -33,13 +40,11 @@ class RefresherLoadMoreListViewPage extends StatelessWidget {
 
 class RefresherLoadMoreListViewLogic
     extends FunStateListRefresherController<ArticleEntity> {
-
   /// 分页参数
-  paging() => FunStatePaging(firstPageNo: 0, pageSize: 20);
+  FunStatePaging paging() => FunStatePaging(firstPageNo: 0, pageSize: 20);
 
   @override
   Future<List<ArticleEntity>> onLoadData(int pageNum, {int? pageSize}) {
     return fetchArticles(pageNum);
   }
-
 }
