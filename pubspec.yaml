@@ -1,6 +1,6 @@
 name: fun_flutter_kit
 description: A fun development kit with flutter
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/phoenixsky
 repository: https://github.com/phoenixsky/fun_flutter_kit
 
@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  get: ^4.1.4
+  get: ^4.3.0
   pull_to_refresh: ^2.0.0
 
 

@@ -20,7 +20,7 @@ abstract class FunStateMixinController extends FullLifeCycleController
 
 /// StateMixin包装类
 /// 为了简化change代码
-mixin FunStateMixin on ListNotifier {
+mixin FunStateMixin on ListNotifierMixin {
   FunStateStatus? _status;
 
   FunStateStatus get funStateStatus {
