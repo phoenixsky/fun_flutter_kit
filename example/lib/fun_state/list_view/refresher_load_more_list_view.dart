@@ -45,6 +45,7 @@ class RefresherLoadMoreListViewLogic
 
   @override
   Future<List<ArticleEntity>> onLoadData(int pageNum, {int? pageSize}) {
+    Get.log('pageNum:$pageNum');
     return fetchArticles(pageNum);
   }
 }

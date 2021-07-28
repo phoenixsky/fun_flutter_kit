@@ -18,6 +18,12 @@ abstract class FunStateListRefresherController<T>
 
   RefreshController get refreshController => _refreshController;
 
+  /// 分页配置,通过重写来局部自定义分页参数.
+  /// 默认可以通过[FunFlutterConfiguration]读取
+  /// [firstPageNo]默认0
+  /// [pageSize]默认20
+  final _paging = FunFlutterConfiguration.of(Get.context!).paging;
+
   /// 当前页码
   late int _currentPageNum;
 
@@ -45,8 +51,6 @@ abstract class FunStateListRefresherController<T>
     if (isInit) changeLoading();
 
     /// 分页
-    final _paging = paging();
-    Get.log(_paging.toString());
     _currentPageNum = _paging.firstPageNo;
     int _pageSize = _paging.pageSize;
 
@@ -79,8 +83,6 @@ abstract class FunStateListRefresherController<T>
 
   /// 上拉加载更多
   loadMore() async {
-    final _paging = paging();
-    _currentPageNum = _paging.firstPageNo;
     int _pageSize = _paging.pageSize;
     try {
       var data = await onLoadData(++_currentPageNum, pageSize: _pageSize);
@@ -113,9 +115,4 @@ abstract class FunStateListRefresherController<T>
   /// 加载数据
   Future<List<T>> onLoadData(int pageNum, {int? pageSize});
 
-  /// 分页配置,通过重写来局部自定义分页参数.
-  /// 默认可以通过[FunFlutterConfiguration]读取
-  /// [firstPageNo]默认0
-  /// [pageSize]默认20
-  FunStatePaging paging() => FunFlutterConfiguration.of(Get.context!).paging;
 }
